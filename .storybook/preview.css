@@ -1,0 +1,148 @@
+/*
+ * Global preview styling for the foundation design system.
+ * Forces Inter across the iframe and polishes the MDX/docs layout so it
+ * feels consistent with the story canvas.
+ */
+:root {
+  --sb-font-inter: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --sb-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+}
+
+html,
+body,
+#storybook-root,
+#storybook-docs,
+.sbdocs,
+.sbdocs-wrapper,
+.sbdocs-content,
+.sbdocs-preview,
+.sb-foundation-root {
+  font-family: var(--sb-font-inter) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/*
+ * Force Inter on everything EXCEPT:
+ *  - Icon elements (Material Symbols)
+ *  - Code elements
+ * The :not() chain targets elements that must keep their own font-family.
+ */
+.sbdocs *:not(code):not(pre):not(kbd):not(samp):not(.icon):not(.icon-outlined):not(.icon-rounded):not(.icon-sharp):not([data-icon]),
+#storybook-root *:not(code):not(pre):not(kbd):not(samp):not(.icon):not(.icon-outlined):not(.icon-rounded):not(.icon-sharp):not([data-icon]),
+#storybook-docs *:not(code):not(pre):not(kbd):not(samp):not(.icon):not(.icon-outlined):not(.icon-rounded):not(.icon-sharp):not([data-icon]) {
+  font-family: var(--sb-font-inter) !important;
+}
+
+code,
+pre,
+kbd,
+samp,
+.sbdocs code,
+.sbdocs pre {
+  font-family: var(--sb-font-mono) !important;
+}
+
+/* Material Symbols must override the Inter rule. */
+.icon-outlined,
+[data-icon="outlined"] {
+  font-family: "Material Symbols Outlined" !important;
+}
+.icon-rounded,
+[data-icon="rounded"] {
+  font-family: "Material Symbols Rounded" !important;
+}
+.icon-sharp,
+[data-icon="sharp"] {
+  font-family: "Material Symbols Sharp" !important;
+}
+
+/* Widen the docs reading column and give stories room to breathe. */
+.sbdocs.sbdocs-wrapper {
+  padding: 40px 48px 80px !important;
+  background: var(--color-neutral-25, #fdfdfd);
+}
+
+.sbdocs-content {
+  max-width: 960px !important;
+}
+
+/* Soften the default rule between MDX sections. */
+.sbdocs hr {
+  border: none;
+  border-top: 1px solid var(--color-neutral-200, #e9eaeb);
+  margin: 32px 0 !important;
+}
+
+/* Docs headings — tighten tracking, match our Section style. */
+.sbdocs h1 {
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--color-neutral-900, #181d27) !important;
+  margin: 0 0 8px !important;
+}
+.sbdocs h2 {
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--color-neutral-900, #181d27) !important;
+  border-bottom: 1px solid var(--color-neutral-200, #e9eaeb) !important;
+  padding-bottom: 10px !important;
+  margin: 32px 0 16px !important;
+}
+.sbdocs h3 {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: var(--color-neutral-900, #181d27) !important;
+  margin: 24px 0 8px !important;
+}
+.sbdocs p,
+.sbdocs li {
+  color: var(--color-neutral-700, #414651) !important;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+}
+
+/* Inline code chips in MDX. */
+.sbdocs :not(pre) > code {
+  background: var(--color-neutral-50, #fafafa) !important;
+  border: 1px solid var(--color-neutral-200, #e9eaeb) !important;
+  color: var(--color-neutral-800, #252b37) !important;
+  padding: 1px 6px !important;
+  border-radius: 4px !important;
+  font-size: 12.5px !important;
+}
+
+/* Docs tables match our TokenTable look. */
+.sbdocs table {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--color-neutral-200, #e9eaeb);
+}
+.sbdocs table th {
+  background: var(--color-neutral-50, #fafafa) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: var(--color-neutral-600, #535862) !important;
+}
+
+/* The story canvas root. */
+.sb-foundation-root {
+  color: var(--color-neutral-lm-900, #181d27);
+  background: transparent;
+  line-height: 1.5;
+}
+[data-theme="dark"] .sb-foundation-root {
+  color: var(--color-neutral-dm-25, #fafafa);
+}
+
+/* Selection matches the brand. */
+::selection {
+  background: var(--color-ep-200, #d9d6fe);
+  color: var(--color-ep-900, #3e1c96);
+}

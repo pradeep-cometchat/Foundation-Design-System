@@ -1,0 +1,590 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Foundation/Introduction" />
+
+{/* ────────────────────────────────── HERO ────────────────────────────────── */}
+
+<div
+  style={{
+    position: "relative",
+    overflow: "hidden",
+    padding: "48px 40px",
+    borderRadius: 20,
+    background:
+      "radial-gradient(120% 120% at 0% 0%, var(--color-ep-100) 0%, var(--color-ep-50) 35%, var(--color-white) 75%)",
+    border: "1px solid var(--color-ep-100)",
+    marginBottom: 40,
+  }}
+>
+  <div
+    aria-hidden
+    style={{
+      position: "absolute",
+      top: -80,
+      right: -80,
+      width: 320,
+      height: 320,
+      borderRadius: "50%",
+      background:
+        "radial-gradient(circle, var(--color-ep-200) 0%, transparent 70%)",
+      opacity: 0.7,
+    }}
+  />
+  <div style={{ position: "relative", zIndex: 1, maxWidth: 720 }}>
+    <div
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 8,
+        fontSize: 11,
+        fontWeight: 600,
+        letterSpacing: "0.08em",
+        textTransform: "uppercase",
+        color: "var(--color-ep-700)",
+        background: "var(--color-white)",
+        padding: "6px 12px",
+        borderRadius: 999,
+        border: "1px solid var(--color-ep-200)",
+        boxShadow: "var(--shadow-xs)",
+        marginBottom: 16,
+      }}
+    >
+      <span
+        style={{
+          width: 6,
+          height: 6,
+          borderRadius: "50%",
+          background: "var(--color-ep-500)",
+        }}
+      />
+      Foundation · v0.1
+    </div>
+    <h1
+      style={{
+        margin: 0,
+        fontSize: 44,
+        lineHeight: 1.08,
+        fontWeight: 700,
+        letterSpacing: "-0.025em",
+        color: "var(--color-neutral-900)",
+      }}
+    >
+      The foundation design system
+    </h1>
+    <p
+      style={{
+        margin: "16px 0 0",
+        fontSize: 17,
+        lineHeight: 1.55,
+        color: "var(--color-neutral-700)",
+      }}
+    >
+      Tokens for color, typography, spacing, radius, icons, and effects. The
+      lowest-level decisions every component, pattern, and screen inherits
+      from. Treat these as the single source of truth &mdash; if a value
+      isn&apos;t here, it shouldn&apos;t be in a component.
+    </p>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: 8,
+        marginTop: 24,
+      }}
+    >
+      {[
+        { label: "foundations", value: "7" },
+        { label: "tokens", value: "180+" },
+        { label: "themes", value: "Light · Dark" },
+        { label: "font", value: "Inter" },
+      ].map((m) => (
+        <span
+          key={m.label}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            padding: "8px 14px",
+            borderRadius: 999,
+            background: "var(--color-white)",
+            border: "1px solid var(--color-neutral-200)",
+            fontSize: 12,
+            color: "var(--color-neutral-700)",
+          }}
+        >
+          <strong style={{ color: "var(--color-neutral-900)" }}>
+            {m.value}
+          </strong>
+          <span style={{ color: "var(--color-neutral-500)" }}>{m.label}</span>
+        </span>
+      ))}
+    </div>
+  </div>
+</div>
+
+{/* ────────────────────────────── WHAT'S INSIDE ────────────────────────────── */}
+
+## What&apos;s inside
+
+<p style={{ color: "var(--color-neutral-600)", marginTop: 0, maxWidth: 720 }}>
+  Seven foundations work together. Open any one from the sidebar to see every
+  token, live controls, and copy-ready CSS.
+</p>
+
+<div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gap: 14,
+    margin: "20px 0 40px",
+  }}
+>
+  {/* Colors */}
+  <div style={cardStyle}>
+    <div style={cardPreview}>
+      <div style={{ display: "flex", gap: 6 }}>
+        {["#ebe9fe", "#9b8afb", "#6852d6", "#4a1fb8", "#27115f"].map((c) => (
+          <div
+            key={c}
+            style={{
+              width: 36,
+              height: 36,
+              borderRadius: 8,
+              background: c,
+              border: "1px solid var(--color-neutral-200)",
+            }}
+          />
+        ))}
+      </div>
+    </div>
+    <CardMeta name="Colors" count="7 families · 74 tokens" />
+    <div style={cardDesc}>
+      Primary, Extended Primary, Neutral (light &amp; dark), plus semantic
+      palettes for Info, Warning, Success, and Error.
+    </div>
+  </div>
+
+  {/* Typography */}
+  <div style={cardStyle}>
+    <div style={cardPreview}>
+      <span
+        style={{
+          fontFamily: "Inter, system-ui, sans-serif",
+          fontSize: 32,
+          fontWeight: 700,
+          letterSpacing: "-0.02em",
+          color: "var(--color-neutral-900)",
+          lineHeight: 1,
+        }}
+      >
+        Aa
+      </span>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          color: "var(--color-neutral-600)",
+          fontSize: 11,
+          marginLeft: 12,
+          fontFamily: "Inter, system-ui, sans-serif",
+        }}
+      >
+        <span>Title · 32/40</span>
+        <span>Body · 14/20</span>
+        <span>Caption · 12/18</span>
+      </div>
+    </div>
+    <CardMeta name="Typography" count="10 styles · 4 weights" />
+    <div style={cardDesc}>
+      8 font sizes, 8 matching line heights, 10 semantic text styles. Inter
+      across the board.
+    </div>
+  </div>
+
+  {/* Spacing */}
+  <div style={cardStyle}>
+    <div style={cardPreview}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+        {[12, 24, 48, 80, 120].map((w) => (
+          <div
+            key={w}
+            style={{
+              width: w,
+              height: 6,
+              borderRadius: 2,
+              background: "var(--color-ep-500)",
+            }}
+          />
+        ))}
+      </div>
+    </div>
+    <CardMeta name="Spacing" count="32 tokens" />
+    <div style={cardDesc}>
+      A 4px scale with half-steps at the small end. 0 through 1920 px — use for
+      padding, margin, and gap.
+    </div>
+  </div>
+
+  {/* Radius */}
+  <div style={cardStyle}>
+    <div style={cardPreview}>
+      {[0, 4, 8, 12, 20, 999].map((r) => (
+        <div
+          key={r}
+          style={{
+            width: 26,
+            height: 26,
+            background: "var(--color-ep-100)",
+            border: "1.5px solid var(--color-ep-500)",
+            borderRadius: r,
+            marginRight: 6,
+          }}
+        />
+      ))}
+    </div>
+    <CardMeta name="Radius" count="11 tokens" />
+    <div style={cardDesc}>
+      Rounding scale from <code>none</code> through <code>4xl</code>, plus{" "}
+      <code>full</code> for pills and circles.
+    </div>
+  </div>
+
+  {/* Icons */}
+  <div style={cardStyle}>
+    <div style={cardPreview}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gap: 6,
+        }}
+      >
+        {["home", "favorite", "search", "settings"].map((n) => (
+          <span
+            key={n}
+            className="icon-outlined"
+            data-icon="outlined"
+            style={{
+              fontFamily: "Material Symbols Outlined",
+              fontSize: 22,
+              color: "var(--color-neutral-800)",
+              fontVariationSettings:
+                "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24",
+            }}
+          >
+            {n}
+          </span>
+        ))}
+      </div>
+    </div>
+    <CardMeta name="Icons" count="3 variants · 4 axes" />
+    <div style={cardDesc}>
+      Material Symbols — a variable font with fill, weight, grade, and optical
+      size axes. Outlined, Rounded, or Sharp.
+    </div>
+  </div>
+
+  {/* Effects */}
+  <div style={{ ...cardStyle, gridColumn: "span 1" }}>
+    <div style={cardPreview}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 12,
+          width: "100%",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            width: 48,
+            height: 32,
+            borderRadius: 6,
+            background: "var(--color-white)",
+            boxShadow: "var(--shadow-sm)",
+          }}
+        />
+        <div
+          style={{
+            width: 48,
+            height: 32,
+            borderRadius: 6,
+            background: "var(--color-white)",
+            boxShadow: "var(--shadow-md)",
+          }}
+        />
+        <div
+          style={{
+            width: 48,
+            height: 32,
+            borderRadius: 6,
+            background: "var(--color-white)",
+            boxShadow: "var(--shadow-lg)",
+          }}
+        />
+      </div>
+    </div>
+    <CardMeta
+      name="Effects"
+      count="Shadows · Focus · Backdrop"
+    />
+    <div style={cardDesc}>
+      5 elevations, 2 focus rings, and 4 backdrop blur sizes with paired light
+      and dark tints.
+    </div>
+  </div>
+</div>
+
+{/* ─────────────────────────────── HOW TO USE ─────────────────────────────── */}
+
+## How to use tokens
+
+Tokens are exposed two ways. Pick whichever fits your stack — they point to
+the same values, so you can mix them freely.
+
+<div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+    gap: 16,
+    margin: "20px 0 16px",
+  }}
+>
+  <div style={panelStyle}>
+    <div style={panelLabel}>Recommended · CSS variables</div>
+    <p style={panelP}>
+      Every token is available as a CSS custom property. The cleanest option for
+      most components.
+    </p>
+    <pre style={codePre}>
+      <code>{`.button {
+  background: var(--color-ep-500);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-body);
+  font-weight: var(--font-weight-semibold);
+}
+.button:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring-xs);
+}`}</code>
+    </pre>
+  </div>
+
+  <div style={panelStyle}>
+    <div style={panelLabel}>Also available · TypeScript</div>
+    <p style={panelP}>
+      Typed imports for anywhere CSS variables don&apos;t reach — runtime
+      conditions, canvas rendering, analytics, emails.
+    </p>
+    <pre style={codePre}>
+      <code>{`import { colors, spacing, radius } from "@foundation/tokens";
+
+colors.extendedPrimary[500]; // "#7b70e4"
+spacing[4];                  // 16
+radius.md;                   // 8
+
+import { Icon } from "@foundation/components/Icon";
+<Icon name="favorite" variant="rounded" fill={1} />`}</code>
+    </pre>
+  </div>
+</div>
+
+{/* ─────────────────────────────── CONVENTIONS ────────────────────────────── */}
+
+## Conventions
+
+<div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gap: 14,
+    margin: "20px 0 40px",
+  }}
+>
+  <ConventionCard
+    title="Naming"
+    body={
+      <>
+        <code>--color-&lt;family&gt;-&lt;shade&gt;</code>,{" "}
+        <code>--space-&lt;n&gt;</code>, <code>--radius-&lt;size&gt;</code>,{" "}
+        <code>--shadow-&lt;level&gt;</code>. Names match the TypeScript keys so
+        searching is predictable.
+      </>
+    }
+  />
+  <ConventionCard
+    title="Dark mode"
+    body={
+      <>
+        Use <code>var(--color-neutral-&lt;shade&gt;)</code> — it remaps
+        automatically under <code>[data-theme=&quot;dark&quot;]</code>. Toggle
+        the theme from the Storybook toolbar to preview.
+      </>
+    }
+  />
+  <ConventionCard
+    title="Accessibility"
+    body={
+      <>
+        Every color swatch shows its best WCAG contrast rating. Focus rings meet
+        the 3:1 non-text contrast requirement on both light and dark surfaces.
+      </>
+    }
+  />
+  <ConventionCard
+    title="One source of truth"
+    body={
+      <>
+        Don&apos;t hard-code <code>#6852d6</code> or <code>16px</code> in a
+        component. If you need a value that doesn&apos;t exist yet, add a token
+        first — then use it.
+      </>
+    }
+  />
+</div>
+
+{/* ─────────────────────────────── CONTRIBUTING ───────────────────────────── */}
+
+## Contributing
+
+1. Edit the relevant <code>tokens/*.ts</code> file.
+2. Sync the matching CSS variables in <code>tokens/tokens.css</code>.
+3. Stories auto-update from the token exports — no story changes needed for
+   value tweaks.
+4. Run <code>npm run typecheck</code> and <code>npm run build-storybook</code>
+   before opening a PR.
+
+{/* ────────────────────────────────── STYLES ──────────────────────────────── */}
+
+export const cardStyle = {
+  padding: 18,
+  borderRadius: 14,
+  border: "1px solid var(--color-neutral-200)",
+  background: "var(--color-white)",
+  boxShadow: "var(--shadow-xs)",
+  display: "flex",
+  flexDirection: "column",
+  gap: 12,
+  transition: "all 160ms ease",
+};
+
+export const cardPreview = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  height: 90,
+  borderRadius: 10,
+  background:
+    "linear-gradient(180deg, var(--color-neutral-25) 0%, var(--color-white) 100%)",
+  border: "1px solid var(--color-neutral-100)",
+  padding: 12,
+  overflow: "hidden",
+};
+
+export const cardDesc = {
+  fontSize: 13,
+  lineHeight: 1.55,
+  color: "var(--color-neutral-600)",
+};
+
+export const panelStyle = {
+  padding: 20,
+  borderRadius: 14,
+  border: "1px solid var(--color-neutral-200)",
+  background: "var(--color-white)",
+  boxShadow: "var(--shadow-xs)",
+  display: "flex",
+  flexDirection: "column",
+  gap: 10,
+};
+
+export const panelLabel = {
+  fontSize: 11,
+  fontWeight: 600,
+  letterSpacing: "0.08em",
+  textTransform: "uppercase",
+  color: "var(--color-ep-700)",
+};
+
+export const panelP = {
+  margin: 0,
+  fontSize: 13,
+  lineHeight: 1.55,
+  color: "var(--color-neutral-600)",
+};
+
+export const codePre = {
+  margin: 0,
+  padding: 14,
+  borderRadius: 10,
+  background: "var(--color-neutral-50)",
+  border: "1px solid var(--color-neutral-200)",
+  fontFamily:
+    "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace",
+  fontSize: 12.5,
+  lineHeight: 1.65,
+  color: "var(--color-neutral-800)",
+  overflowX: "auto",
+};
+
+export const CardMeta = ({ name, count }) => (
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "baseline",
+      gap: 8,
+    }}
+  >
+    <strong style={{ fontSize: 15, color: "var(--color-neutral-900)" }}>
+      {name}
+    </strong>
+    <span
+      style={{
+        fontSize: 11,
+        color: "var(--color-ep-700)",
+        fontWeight: 600,
+        letterSpacing: "0.02em",
+      }}
+    >
+      {count}
+    </span>
+  </div>
+);
+
+export const ConventionCard = ({ title, body }) => (
+  <div
+    style={{
+      padding: "16px 18px",
+      borderRadius: 12,
+      border: "1px solid var(--color-neutral-200)",
+      background: "var(--color-white)",
+      boxShadow: "var(--shadow-xs)",
+    }}
+  >
+    <strong
+      style={{
+        display: "block",
+        fontSize: 14,
+        color: "var(--color-neutral-900)",
+        marginBottom: 6,
+      }}
+    >
+      {title}
+    </strong>
+    <div
+      style={{
+        fontSize: 13,
+        lineHeight: 1.55,
+        color: "var(--color-neutral-600)",
+      }}
+    >
+      {body}
+    </div>
+  </div>
+);
