@@ -63,7 +63,7 @@
   font-weight: var(--font-weight-regular); /* 400 */
   color: var(--color-white);
   line-height: var(--line-height-caption-1); /* 18px */
-  margin-top: 4px;
+  margin-top: var(--space-1);
   opacity: 0.9;
 }
 

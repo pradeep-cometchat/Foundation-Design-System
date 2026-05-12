@@ -21,7 +21,7 @@
 .dropdown__label {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-1);
   font-size: var(--font-size-2); /* 14px */
   font-weight: var(--font-weight-medium); /* 500 */
   color: var(--color-neutral-lm-700); /* #414651 */
