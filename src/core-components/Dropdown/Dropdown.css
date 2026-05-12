@@ -1,0 +1,283 @@
+/*
+ * Dropdown / Select component.
+ * Uses foundation tokens for colors, radius, shadows, spacing, and typography.
+ */
+
+/* ─── WRAPPER ──────────────────────────────────────────────────────────────── */
+
+.dropdown {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--space-1-5); /* 6px */
+  width: 320px;
+  font-family: var(--font-family-heading);
+}
+
+.dropdown--full { width: 100%; }
+
+/* ─── LABEL ────────────────────────────────────────────────────────────────── */
+
+.dropdown__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-size-2); /* 14px */
+  font-weight: var(--font-weight-medium); /* 500 */
+  color: var(--color-neutral-lm-700); /* #414651 */
+  line-height: var(--line-height-body); /* 20px */
+}
+
+.dropdown__required {
+  color: var(--color-primary); /* #6852d6 */
+  font-weight: var(--font-weight-medium);
+}
+
+.dropdown__tooltip-trigger {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-neutral-lm-400); /* #a4a7ae */
+  cursor: help;
+  transition: color 120ms ease;
+}
+
+.dropdown__tooltip-trigger:hover {
+  color: var(--color-neutral-lm-600); /* #535862 */
+}
+
+/* ─── TRIGGER (input-like) ─────────────────────────────────────────────────── */
+
+.dropdown__trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2); /* 8px */
+  padding: var(--space-2) var(--space-3); /* 8px 12px */
+  background: var(--color-white);
+  border: 1px solid var(--color-neutral-lm-300); /* #d5d7da */
+  border-radius: var(--radius-md); /* 8px */
+  font-family: inherit;
+  font-size: var(--font-size-2); /* 14px */
+  font-weight: var(--font-weight-regular); /* 400 */
+  color: var(--color-neutral-lm-900); /* #181d27 */
+  cursor: pointer;
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+  box-shadow: var(--shadow-xs);
+  min-height: 40px;
+  text-align: left;
+  width: 100%;
+}
+
+.dropdown__trigger:hover {
+  border-color: var(--color-neutral-lm-400);
+}
+
+.dropdown__trigger:focus,
+.dropdown__trigger--open {
+  border-color: var(--color-primary); /* #6852d6 */
+  box-shadow: var(--focus-ring-xs);
+}
+
+.dropdown__trigger--error {
+  border-color: var(--color-error); /* #d92d20 */
+}
+.dropdown__trigger--error:focus {
+  box-shadow: var(--focus-ring-error-xs);
+}
+
+.dropdown__trigger:disabled {
+  background: var(--color-neutral-lm-50); /* #fafafa */
+  color: var(--color-neutral-lm-500); /* #717680 */
+  cursor: not-allowed;
+  border-color: var(--color-neutral-lm-200);
+}
+
+.dropdown__trigger-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown__trigger-text--placeholder {
+  color: var(--color-neutral-lm-500); /* #717680 */
+}
+
+.dropdown__trigger-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  color: var(--color-neutral-lm-500);
+  transition: transform 200ms ease;
+}
+
+.dropdown__trigger-icon--open {
+  transform: rotate(180deg);
+}
+
+/* ─── HINT / ERROR ─────────────────────────────────────────────────────────── */
+
+.dropdown__hint {
+  font-size: var(--font-size-2); /* 14px */
+  color: var(--color-neutral-lm-600); /* #535862 */
+  line-height: var(--line-height-body);
+}
+
+.dropdown__hint--error {
+  color: var(--color-error); /* #d92d20 */
+}
+
+/* ─── MENU ─────────────────────────────────────────────────────────────────── */
+
+.dropdown__menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: var(--space-1); /* 4px */
+  background: var(--color-white);
+  border: 1px solid var(--color-neutral-lm-200); /* #e9eaeb */
+  border-radius: var(--radius-md); /* 8px */
+  box-shadow: var(--shadow-lg);
+  z-index: 50;
+  max-height: 280px;
+  overflow-y: auto;
+  padding: var(--space-1); /* 4px */
+}
+
+/* ─── SEARCH ───────────────────────────────────────────────────────────────── */
+
+.dropdown__search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-neutral-lm-200);
+  margin: calc(-1 * var(--space-1)) calc(-1 * var(--space-1)) var(--space-1);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.dropdown__search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: var(--font-size-2);
+  color: var(--color-neutral-lm-900);
+  background: transparent;
+}
+
+.dropdown__search-input::placeholder {
+  color: var(--color-neutral-lm-500);
+}
+
+.dropdown__search-icon {
+  color: var(--color-neutral-lm-400);
+  flex-shrink: 0;
+}
+
+/* ─── MENU ITEM ────────────────────────────────────────────────────────────── */
+
+.dropdown__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2); /* 8px */
+  padding: 10px 10px 10px 8px;
+  border-radius: var(--radius-sm); /* 6px */
+  cursor: pointer;
+  transition: background 80ms ease;
+  font-size: var(--font-size-2); /* 14px */
+  font-weight: var(--font-weight-medium); /* 500 */
+  color: var(--color-neutral-lm-900); /* #181d27 */
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  outline: none;
+}
+
+.dropdown__item:hover,
+.dropdown__item:focus-visible {
+  background: var(--color-neutral-lm-50); /* #fafafa */
+}
+
+.dropdown__item--selected {
+  background: var(--color-neutral-lm-50); /* #fafafa */
+}
+
+.dropdown__item--disabled {
+  color: var(--color-neutral-lm-400);
+  cursor: not-allowed;
+}
+
+.dropdown__item--disabled:hover {
+  background: transparent;
+}
+
+.dropdown__item-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.dropdown__item-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown__item-description {
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-neutral-lm-600); /* #535862 */
+}
+
+.dropdown__item-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-neutral-lm-500);
+}
+
+.dropdown__item-icon img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.dropdown__item-check {
+  flex-shrink: 0;
+  display: inline-flex;
+  color: var(--color-primary); /* #6852d6 */
+  margin-left: auto;
+}
+
+/* ─── CHECKBOX (multiple) ──────────────────────────────────────────────────── */
+
+.dropdown__checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-xs); /* 4px */
+  border: 1.5px solid var(--color-neutral-lm-300);
+  background: var(--color-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.dropdown__checkbox--checked {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* ─── EMPTY STATE ──────────────────────────────────────────────────────────── */
+
+.dropdown__empty {
+  padding: var(--space-4);
+  text-align: center;
+  color: var(--color-neutral-lm-500);
+  font-size: var(--font-size-2);
+}

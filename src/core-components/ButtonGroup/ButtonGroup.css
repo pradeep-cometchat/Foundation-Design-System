@@ -1,0 +1,101 @@
+/*
+ * ButtonGroup — segmented control / toggle group.
+ * Uses foundation tokens for colors, radius, shadows, and typography.
+ *
+ * Structure:
+ *   .btn-group          → outer container with shared border + radius
+ *   .btn-group__item    → individual segment button
+ *   .btn-group__item--current → active/selected state
+ */
+
+/* ─── GROUP CONTAINER ──────────────────────────────────────────────────────── */
+
+.btn-group {
+  display: inline-flex;
+  border: 1px solid var(--color-neutral-lm-300); /* #d5d7da */
+  border-radius: var(--radius-md); /* 8px */
+  overflow: hidden;
+  box-shadow: var(--shadow-xs);
+}
+
+/* ─── ITEM ─────────────────────────────────────────────────────────────────── */
+
+.btn-group__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1-5); /* 6px */
+  padding: var(--space-2) var(--space-4); /* 8px 16px */
+  height: 40px;
+  border: none;
+  border-right: 1px solid var(--color-neutral-lm-300); /* divider between items */
+  background: var(--color-white);
+  color: var(--color-neutral-lm-700); /* #414651 */
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-2); /* 14px */
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-body); /* 20px */
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+  outline: none;
+  position: relative;
+}
+
+.btn-group__item:last-child {
+  border-right: none;
+}
+
+/* ─── STATES ───────────────────────────────────────────────────────────────── */
+
+.btn-group__item:hover {
+  background: var(--color-neutral-lm-50); /* #fafafa */
+  color: var(--color-neutral-lm-800); /* #252b37 */
+}
+
+.btn-group__item:focus-visible {
+  z-index: 1;
+  box-shadow: var(--focus-ring-xs);
+}
+
+.btn-group__item:disabled {
+  background: var(--color-white);
+  color: var(--color-neutral-lm-500); /* #717680 */
+  cursor: not-allowed;
+}
+
+/* Current / active */
+.btn-group__item--current {
+  background: var(--color-neutral-lm-50); /* #fafafa */
+  color: var(--color-neutral-lm-800); /* #252b37 */
+}
+
+.btn-group__item--current:hover {
+  background: var(--color-neutral-lm-100); /* #f5f5f5 */
+}
+
+/* ─── ICON VARIANTS ────────────────────────────────────────────────────────── */
+
+/* With leading icon: slightly less left padding */
+.btn-group__item--has-icon {
+  padding-left: var(--space-3-5, 14px); /* 14px */
+}
+
+/* Icon-only: square-ish */
+.btn-group__item--icon-only {
+  padding: var(--space-2) var(--space-3); /* 8px 12px */
+}
+
+/* ─── ICON ─────────────────────────────────────────────────────────────────── */
+
+.btn-group__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn-group__icon svg,
+.btn-group__icon [data-icon] {
+  width: 20px;
+  height: 20px;
+}

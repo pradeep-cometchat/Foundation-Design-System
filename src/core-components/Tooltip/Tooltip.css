@@ -1,0 +1,191 @@
+/*
+ * Tooltip component.
+ * Uses foundation tokens. Exact values from Figma.
+ *
+ * Background: #0a0d12 (neutral-950)
+ * Text: #ffffff, 12px/600
+ * Supporting: #ffffff, 12px/400
+ * Radius: 8px
+ * Padding: 8px 12px (title only) / 12px (with supporting)
+ * Arrow: 6px triangle
+ */
+
+/* ─── WRAPPER ──────────────────────────────────────────────────────────────── */
+
+.tooltip-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip-wrap:hover .tooltip,
+.tooltip--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ─── TOOLTIP ──────────────────────────────────────────────────────────────── */
+
+.tooltip {
+  position: absolute;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 150ms ease, visibility 150ms ease;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.tooltip__content {
+  background: var(--color-neutral-lm-950); /* #0a0d12 */
+  border-radius: var(--radius-md); /* 8px */
+  padding: var(--space-2) var(--space-3); /* 8px 12px */
+  width: max-content;
+  max-width: 320px;
+}
+
+.tooltip--has-supporting .tooltip__content {
+  padding: var(--space-3); /* 12px */
+  width: 320px;
+}
+
+.tooltip__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-1); /* 12px */
+  font-weight: var(--font-weight-semibold); /* 600 */
+  color: var(--color-white);
+  line-height: var(--line-height-caption-1); /* 18px */
+}
+
+.tooltip__supporting {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-1); /* 12px */
+  font-weight: var(--font-weight-regular); /* 400 */
+  color: var(--color-white);
+  line-height: var(--line-height-caption-1); /* 18px */
+  margin-top: 4px;
+  opacity: 0.9;
+}
+
+/* ─── ARROW ────────────────────────────────────────────────────────────────── */
+
+.tooltip__arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  flex-shrink: 0;
+  position: absolute;
+}
+
+/* ─── TOP POSITIONS (tooltip appears ABOVE trigger, arrow points DOWN) ─────── */
+
+.tooltip--top-center,
+.tooltip--top-left,
+.tooltip--top-right {
+  bottom: calc(100% + 6px);
+  flex-direction: column;
+}
+
+.tooltip--top-center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tooltip--top-left {
+  left: 0;
+}
+.tooltip--top-right {
+  right: 0;
+}
+
+.tooltip--top-center .tooltip__arrow,
+.tooltip--top-left .tooltip__arrow,
+.tooltip--top-right .tooltip__arrow {
+  border-width: 6px 6px 0 6px;
+  border-color: var(--color-neutral-lm-950) transparent transparent transparent;
+  bottom: -6px;
+}
+.tooltip--top-center .tooltip__arrow { left: 50%; transform: translateX(-50%); }
+.tooltip--top-left .tooltip__arrow { left: 12px; }
+.tooltip--top-right .tooltip__arrow { right: 12px; left: auto; }
+
+/* ─── BOTTOM POSITIONS (tooltip appears BELOW trigger, arrow points UP) ────── */
+
+.tooltip--bottom-center,
+.tooltip--bottom-left,
+.tooltip--bottom-right {
+  top: calc(100% + 6px);
+  flex-direction: column;
+}
+
+.tooltip--bottom-center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tooltip--bottom-left {
+  left: 0;
+}
+.tooltip--bottom-right {
+  right: 0;
+}
+
+.tooltip--bottom-center .tooltip__arrow,
+.tooltip--bottom-left .tooltip__arrow,
+.tooltip--bottom-right .tooltip__arrow {
+  border-width: 0 6px 6px 6px;
+  border-color: transparent transparent var(--color-neutral-lm-950) transparent;
+  top: -6px;
+}
+.tooltip--bottom-center .tooltip__arrow { left: 50%; transform: translateX(-50%); }
+.tooltip--bottom-left .tooltip__arrow { left: 12px; }
+.tooltip--bottom-right .tooltip__arrow { right: 12px; left: auto; }
+
+/* ─── LEFT (tooltip appears to the LEFT of trigger, arrow points RIGHT) ────── */
+
+.tooltip--left-pos {
+  right: calc(100% + 6px);
+  top: 50%;
+  transform: translateY(-50%);
+  flex-direction: row;
+}
+
+.tooltip--left-pos .tooltip__arrow {
+  border-width: 6px 0 6px 6px;
+  border-color: transparent transparent transparent var(--color-neutral-lm-950);
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: auto;
+  bottom: auto;
+}
+
+/* ─── RIGHT (tooltip appears to the RIGHT of trigger, arrow points LEFT) ───── */
+
+.tooltip--right-pos {
+  left: calc(100% + 6px);
+  top: 50%;
+  transform: translateY(-50%);
+  flex-direction: row;
+}
+
+.tooltip--right-pos .tooltip__arrow {
+  border-width: 6px 6px 6px 0;
+  border-color: transparent var(--color-neutral-lm-950) transparent transparent;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: auto;
+  bottom: auto;
+}
+
+/* ─── NONE (no arrow, centered above) ─────────────────────────────────────── */
+
+.tooltip--none {
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: column;
+}
+
+.tooltip--none .tooltip__arrow {
+  display: none;
+}

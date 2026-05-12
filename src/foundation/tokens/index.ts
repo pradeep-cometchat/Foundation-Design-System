@@ -5,3 +5,5 @@ export * from "./typography";
 export * from "./backdropBlur";
 export * from "./radius";
 export * from "./icons";
+export * from "./avatars";
+export * from "./miscIcons";

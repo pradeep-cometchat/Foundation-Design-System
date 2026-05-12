@@ -1,0 +1,234 @@
+/*
+ * Input, TagInput & Textarea component.
+ * Uses foundation tokens. Exact values from Figma.
+ *
+ * Sizes: sm (36px), md (40px), lg (44px — Figma default)
+ * States: placeholder, filled, focused, disabled, error (destructive)
+ * Types: Default (text), Tags (user chips), Textarea
+ */
+
+/* ─── WRAPPER ──────────────────────────────────────────────────────────────── */
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1-5); /* 6px */
+  width: 320px;
+  font-family: var(--font-family-heading);
+}
+
+/* ─── LABEL ────────────────────────────────────────────────────────────────── */
+
+.input-field__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-size-2); /* 14px */
+  font-weight: var(--font-weight-medium); /* 500 */
+  color: var(--color-neutral-lm-700); /* #414651 */
+  line-height: var(--line-height-body); /* 20px */
+}
+
+.input-field__required {
+  color: var(--color-primary); /* #6852d6 */
+  font-weight: var(--font-weight-medium);
+}
+
+.input-field__tooltip {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-neutral-lm-400); /* #a4a7ae */
+  cursor: help;
+  transition: color 120ms ease;
+}
+
+.input-field__tooltip:hover {
+  color: var(--color-neutral-lm-600);
+}
+
+/* ─── INPUT CONTAINER ──────────────────────────────────────────────────────── */
+
+.input-field__input-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2); /* 8px */
+  background: var(--color-white);
+  border: 1px solid var(--color-neutral-lm-300); /* #d5d7da */
+  border-radius: var(--radius-md); /* 8px */
+  box-shadow: var(--shadow-xs);
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+/* Sizes */
+.input-field__input-wrap--sm {
+  min-height: 36px;
+  padding: 6px var(--space-3); /* 6px 12px */
+}
+.input-field__input-wrap--md {
+  min-height: 40px;
+  padding: var(--space-2) var(--space-3); /* 8px 12px */
+}
+.input-field__input-wrap--lg {
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3); /* 8px 12px */
+}
+
+/* States */
+.input-field__input-wrap:focus-within {
+  border-color: var(--color-ep-500); /* #7b70e4 */
+  box-shadow: var(--focus-ring-xs);
+}
+
+.input-field__input-wrap--error {
+  border-color: var(--color-error-300); /* #fca19b (from Figma) */
+}
+
+.input-field__input-wrap--error:focus-within {
+  border-color: var(--color-error-500); /* #f04438 */
+  box-shadow: var(--focus-ring-error-xs);
+}
+
+.input-field__input-wrap--disabled {
+  background: var(--color-neutral-lm-50); /* #fafafa */
+  cursor: not-allowed;
+}
+
+/* ─── NATIVE INPUT ─────────────────────────────────────────────────────────── */
+
+.input-field__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--font-size-3); /* 16px */
+  font-weight: var(--font-weight-regular); /* 400 */
+  color: var(--color-neutral-lm-900); /* #181d27 */
+  line-height: var(--line-height-h4); /* 24px */
+  min-width: 0;
+}
+
+.input-field__input::placeholder {
+  color: var(--color-neutral-lm-500); /* #717680 */
+}
+
+.input-field__input:disabled {
+  color: var(--color-neutral-lm-500);
+  cursor: not-allowed;
+}
+
+/* ─── TAG INPUT ────────────────────────────────────────────────────────────── */
+
+.input-field__tags-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2); /* 8px */
+  flex: 1;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.input-field__tags-list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1); /* 4px */
+  flex-wrap: wrap;
+}
+
+.input-field__tag-input {
+  flex: 1;
+  min-width: 80px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--font-size-3); /* 16px */
+  font-weight: var(--font-weight-regular);
+  color: var(--color-neutral-lm-900);
+  line-height: var(--line-height-h4);
+}
+
+.input-field__tag-input::placeholder {
+  color: var(--color-neutral-lm-500);
+}
+
+.input-field__tag-input:disabled {
+  cursor: not-allowed;
+}
+
+/* ─── TEXTAREA ─────────────────────────────────────────────────────────────── */
+
+.input-field__textarea-wrap {
+  display: flex;
+  padding: var(--space-3) var(--space-3-5, 14px); /* 12px 14px */
+  background: var(--color-white);
+  border: 1px solid var(--color-neutral-lm-300);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.input-field__textarea-wrap:focus-within {
+  border-color: var(--color-ep-500);
+  box-shadow: var(--focus-ring-xs);
+}
+
+.input-field__textarea-wrap--error {
+  border-color: var(--color-error-300);
+}
+
+.input-field__textarea-wrap--error:focus-within {
+  border-color: var(--color-error-500);
+  box-shadow: var(--focus-ring-error-xs);
+}
+
+.input-field__textarea-wrap--disabled {
+  background: var(--color-neutral-lm-50);
+  cursor: not-allowed;
+}
+
+.input-field__textarea {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--font-size-3); /* 16px */
+  font-weight: var(--font-weight-regular);
+  color: var(--color-neutral-lm-900);
+  line-height: var(--line-height-h4);
+  resize: vertical;
+  min-height: 80px;
+}
+
+.input-field__textarea::placeholder {
+  color: var(--color-neutral-lm-500);
+}
+
+.input-field__textarea:disabled {
+  color: var(--color-neutral-lm-500);
+  cursor: not-allowed;
+}
+
+/* ─── ICONS ────────────────────────────────────────────────────────────────── */
+
+.input-field__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-neutral-lm-500); /* #717680 */
+}
+
+/* ─── HINT / ERROR ─────────────────────────────────────────────────────────── */
+
+.input-field__hint {
+  font-size: var(--font-size-2); /* 14px */
+  font-weight: var(--font-weight-regular);
+  color: var(--color-neutral-lm-600); /* #535862 */
+  line-height: var(--line-height-body);
+}
+
+.input-field__hint--error {
+  color: var(--color-error); /* #d92d20 */
+}

@@ -4,6 +4,7 @@ const config: StorybookConfig = {
   stories: [
     "../src/foundation/**/*.mdx",
     "../src/foundation/**/*.stories.@(ts|tsx)",
+    "../src/core-components/**/*.stories.@(ts|tsx)",
   ],
   addons: [
     "@storybook/addon-essentials",

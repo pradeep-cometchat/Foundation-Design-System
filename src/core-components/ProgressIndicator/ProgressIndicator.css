@@ -1,0 +1,200 @@
+/*
+ * Progress Indicator — Progress Bar & Progress Circle.
+ * Uses foundation tokens. Values from Figma node 19150-35942.
+ *
+ * Progress Bar:
+ *   Track: 8px height, radius-full, bg #e9eaeb
+ *   Fill: primary (#6852d6), radius-full
+ *   Label Right: Inter 500 14px, color #414651
+ *   Top Floating: white pill, 8px radius, border #e9eaeb, shadow, Inter 600 12px #414651
+ *   Slider (none): 16px white thumb, border #f5f5f5
+ *
+ * Progress Circle:
+ *   sm: 200px (180 ring, 20 stroke)
+ *   xs: 160px (144 ring, 16 stroke)
+ *   xxs: 64px (56 ring, 8 stroke)
+ *   Ring bg: #e9eaeb, ring fill: primary
+ */
+
+/* ─── PROGRESS BAR ─────────────────────────────────────────────────────────── */
+
+.progress-bar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.progress-bar--label-right {
+  gap: var(--space-3); /* 12px */
+}
+
+.progress-bar--label-top-floating {
+  padding-top: 40px; /* space for floating label above */
+}
+
+.progress-bar__track {
+  flex: 1;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-neutral-lm-200); /* #e9eaeb */
+  position: relative;
+  overflow: visible;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--color-primary); /* #6852d6 */
+  transition: width 300ms ease;
+  position: relative;
+  min-width: 4px;
+}
+
+/* ─── Label Right ──────────────────────────────────────────────────────────── */
+
+.progress-bar__label-right {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-2); /* 14px */
+  font-weight: var(--font-weight-medium); /* 500 */
+  line-height: var(--line-height-body); /* 20px */
+  color: var(--color-neutral-lm-700); /* #414651 */
+  white-space: nowrap;
+  min-width: 30px;
+  text-align: right;
+}
+
+/* ─── Top Floating Label (white pill with shadow) ──────────────────────────── */
+
+.progress-bar__floating-label {
+  position: absolute;
+  top: -42px;
+  right: -25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.progress-bar__floating-text {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-1); /* 12px */
+  font-weight: var(--font-weight-semibold); /* 600 */
+  line-height: var(--line-height-caption-1); /* 18px */
+  color: var(--color-neutral-lm-700); /* #414651 */
+  background: var(--color-white);
+  border: 1px solid var(--color-neutral-lm-200); /* #e9eaeb */
+  border-radius: var(--radius-md); /* 8px */
+  padding: 8px 12px;
+  white-space: nowrap;
+  box-shadow:
+    0 2px 2px rgba(10, 13, 18, 0.04),
+    0 4px 6px rgba(10, 13, 18, 0.03),
+    0 12px 16px rgba(10, 13, 18, 0.08);
+}
+
+/* ─── Slider Thumb (Label=None) ────────────────────────────────────────────── */
+
+.progress-bar__thumb {
+  position: absolute;
+  top: 50%;
+  right: -8px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-full);
+  background: var(--color-white);
+  border: 1px solid var(--color-neutral-lm-100); /* #f5f5f5 */
+  box-shadow: 0 1px 3px rgba(10, 13, 18, 0.1);
+  pointer-events: none;
+}
+
+/* ─── PROGRESS CIRCLE ──────────────────────────────────────────────────────── */
+
+.progress-circle {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.progress-circle--sm {
+  width: 200px;
+  height: 200px;
+}
+
+.progress-circle--xs {
+  width: 160px;
+  height: 160px;
+}
+
+.progress-circle--xxs {
+  width: 64px;
+}
+
+.progress-circle__svg {
+  width: 100%;
+  height: 100%;
+}
+
+.progress-circle--xxs .progress-circle__svg {
+  width: 64px;
+  height: 64px;
+}
+
+.progress-circle__bg {
+  stroke: var(--color-neutral-lm-200); /* #e9eaeb */
+}
+
+.progress-circle__ring {
+  stroke: var(--color-primary); /* #6852d6 */
+  transition: stroke-dashoffset 300ms ease;
+}
+
+/* Content centered inside the ring (sm, xs) */
+.progress-circle__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  text-align: center;
+}
+
+.progress-circle__label {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-1); /* 12px */
+  font-weight: var(--font-weight-medium); /* 500 */
+  line-height: var(--line-height-caption-1); /* 18px */
+  color: var(--color-neutral-lm-600); /* #535862 */
+}
+
+.progress-circle__value {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-semibold); /* 600 */
+  color: var(--color-neutral-lm-900); /* #181d27 */
+}
+
+.progress-circle--sm .progress-circle__value {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.progress-circle--xs .progress-circle__value {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+/* Label below the ring (xxs) */
+.progress-circle__label-below {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-1); /* 12px */
+  font-weight: var(--font-weight-medium); /* 500 */
+  line-height: var(--line-height-caption-1); /* 18px */
+  color: var(--color-neutral-lm-600); /* #535862 */
+  margin-top: var(--space-1); /* 4px */
+  text-align: center;
+}

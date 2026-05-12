@@ -1,0 +1,131 @@
+/*
+ * Toggle / Switch component.
+ * Uses foundation tokens. Exact values from Figma.
+ *
+ * Sizes: sm (track 36×20, thumb 16), md (track 44×24, thumb 20)
+ * States: default, hover, focus, disabled
+ * Pressed: true (on) / false (off)
+ */
+
+/* ─── WRAPPER ──────────────────────────────────────────────────────────────── */
+
+.toggle {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-3); /* 12px */
+  font-family: var(--font-family-heading);
+  cursor: pointer;
+}
+
+.toggle--disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* ─── TRACK ────────────────────────────────────────────────────────────────── */
+
+.toggle__track {
+  position: relative;
+  flex-shrink: 0;
+  border-radius: var(--radius-full); /* 9999px */
+  background: var(--color-neutral-lm-100); /* #f5f5f5 */
+  transition: background 160ms ease;
+  cursor: inherit;
+  border: none;
+  padding: 0;
+  outline: none;
+}
+
+/* Sizes */
+.toggle__track--sm {
+  width: 36px;
+  height: 20px;
+}
+
+.toggle__track--md {
+  width: 44px;
+  height: 24px;
+}
+
+/* Pressed (on) */
+.toggle__track--pressed {
+  background: var(--color-primary); /* #6852d6 */
+}
+
+/* Hover */
+.toggle__track:hover:not(:disabled) {
+  background: var(--color-neutral-lm-200); /* #e9eaeb */
+}
+
+.toggle__track--pressed:hover:not(:disabled) {
+  background: var(--color-ep-700); /* #5925dc */
+}
+
+/* Focus */
+.toggle__track:focus-visible {
+  box-shadow: var(--focus-ring-xs);
+}
+
+/* Disabled */
+.toggle__track:disabled {
+  background: var(--color-neutral-lm-100); /* #f5f5f5 */
+  cursor: not-allowed;
+}
+
+.toggle__track--pressed:disabled {
+  background: var(--color-neutral-lm-100); /* disabled pressed = same gray */
+}
+
+/* ─── THUMB ────────────────────────────────────────────────────────────────── */
+
+.toggle__thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  background: var(--color-white);
+  box-shadow: var(--shadow-xs);
+  transition: transform 160ms ease;
+}
+
+.toggle__thumb--sm {
+  width: 16px;
+  height: 16px;
+}
+
+.toggle__thumb--md {
+  width: 20px;
+  height: 20px;
+}
+
+/* Pressed position */
+.toggle__track--pressed .toggle__thumb--sm {
+  transform: translateX(16px); /* 36 - 16 - 4 = 16 */
+}
+
+.toggle__track--pressed .toggle__thumb--md {
+  transform: translateX(20px); /* 44 - 20 - 4 = 20 */
+}
+
+/* ─── TEXT ─────────────────────────────────────────────────────────────────── */
+
+.toggle__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 2px;
+}
+
+.toggle__label {
+  font-size: var(--font-size-3); /* 16px */
+  font-weight: var(--font-weight-medium); /* 500 */
+  color: var(--color-neutral-lm-700); /* #414651 */
+  line-height: var(--line-height-h4); /* 24px */
+}
+
+.toggle__description {
+  font-size: var(--font-size-2); /* 14px */
+  font-weight: var(--font-weight-regular); /* 400 */
+  color: var(--color-neutral-lm-600); /* #535862 */
+  line-height: var(--line-height-body); /* 20px */
+}

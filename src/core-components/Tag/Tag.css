@@ -1,0 +1,149 @@
+/*
+ * Tag component.
+ * Uses foundation tokens for colors, radius, spacing, and typography.
+ *
+ * Sizes: sm (24px), md (28px), lg (32px)
+ * Slots: checkbox, avatar, close
+ */
+
+/* ─── BASE ─────────────────────────────────────────────────────────────────── */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: var(--color-white);
+  border: 1px solid var(--color-neutral-lm-300); /* #d5d7da */
+  border-radius: var(--radius-sm); /* 6px */
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-2); /* 14px */
+  font-weight: var(--font-weight-medium); /* 500 */
+  line-height: var(--line-height-body); /* 20px */
+  color: var(--color-neutral-lm-700); /* #414651 */
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+/* ─── SIZES ────────────────────────────────────────────────────────────────── */
+
+.tag--sm {
+  height: 24px;
+  padding: 2px 9px;
+}
+
+.tag--md {
+  height: 28px;
+  padding: 4px 10px;
+}
+
+.tag--lg {
+  height: 32px;
+  padding: 6px 10px 6px 12px;
+}
+
+/* ─── AVATAR ───────────────────────────────────────────────────────────────── */
+
+.tag__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tag__avatar img {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tag--lg .tag__avatar img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Reduce left padding when avatar is present */
+.tag--has-avatar.tag--sm { padding-left: 5px; }
+.tag--has-avatar.tag--md { padding-left: 7px; }
+.tag--has-avatar.tag--lg { padding-left: 6px; }
+
+/* ─── CHECKBOX ─────────────────────────────────────────────────────────────── */
+
+.tag__checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-xs); /* 4px */
+  border: 1.5px solid var(--color-neutral-lm-300); /* #d5d7da */
+  background: var(--color-white);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.tag__checkbox:hover {
+  border-color: var(--color-primary);
+}
+
+.tag__checkbox:focus-visible {
+  box-shadow: var(--focus-ring-xs);
+  outline: none;
+}
+
+.tag__checkbox--checked {
+  background: var(--color-primary); /* #6852d6 */
+  border-color: var(--color-primary);
+}
+
+/* Reduce left padding when checkbox is present */
+.tag--has-checkbox.tag--sm { padding-left: 5px; }
+.tag--has-checkbox.tag--md { padding-left: 5px; }
+.tag--has-checkbox.tag--lg { padding-left: 6px; }
+
+/* ─── CLOSE BUTTON ─────────────────────────────────────────────────────────── */
+
+.tag__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: transparent;
+  color: var(--color-neutral-lm-500); /* #717680 */
+  cursor: pointer;
+  border-radius: var(--radius-xs); /* 4px */
+  padding: 0;
+  transition: color 120ms ease, background 120ms ease;
+}
+
+.tag__close:hover {
+  color: var(--color-neutral-lm-700);
+  background: var(--color-neutral-lm-100);
+}
+
+.tag--lg .tag__close {
+  width: 20px;
+  height: 20px;
+}
+
+/* Reduce right padding when close is present */
+.tag--has-close.tag--sm { padding-right: 4px; }
+.tag--has-close.tag--md { padding-right: 4px; }
+.tag--has-close.tag--lg { padding-right: 4px; }
+
+/* ─── DISABLED ─────────────────────────────────────────────────────────────── */
+
+.tag--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tag--disabled .tag__checkbox,
+.tag--disabled .tag__close {
+  cursor: not-allowed;
+  pointer-events: none;
+}

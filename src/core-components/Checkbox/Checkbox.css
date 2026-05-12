@@ -1,0 +1,124 @@
+/*
+ * Checkbox & Radio component.
+ * Uses foundation tokens. Exact values from Figma.
+ *
+ * Types: checkbox (rounded square), radio (circle)
+ * Sizes: sm (16px), md (20px)
+ * States: default, hover, focus, disabled, checked, indeterminate
+ */
+
+.checkbox {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-3); /* 12px */
+  font-family: var(--font-family-heading);
+  cursor: pointer;
+}
+
+.checkbox--disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* ─── BOX ──────────────────────────────────────────────────────────────────── */
+
+.checkbox__box {
+  position: relative;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--color-neutral-lm-300); /* #d5d7da */
+  background: transparent;
+  cursor: inherit;
+  padding: 0;
+  outline: none;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+/* Sizes */
+.checkbox__box--sm {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-xs); /* 4px */
+}
+
+.checkbox__box--md {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-sm); /* 6px */
+}
+
+/* Radio = circle */
+.checkbox__box--radio {
+  border-radius: var(--radius-full); /* 9999px */
+}
+
+/* Hover */
+.checkbox__box:hover:not(:disabled) {
+  border-color: var(--color-primary); /* #6852d6 */
+}
+
+/* Focus */
+.checkbox__box:focus-visible {
+  box-shadow: var(--focus-ring-xs);
+}
+
+/* Checked */
+.checkbox__box--checked {
+  background: var(--color-primary); /* #6852d6 */
+  border-color: var(--color-primary);
+}
+
+.checkbox__box--checked:hover:not(:disabled) {
+  background: var(--color-ep-700); /* #5925dc */
+  border-color: var(--color-ep-700);
+}
+
+/* Disabled */
+.checkbox__box:disabled {
+  background: var(--color-neutral-lm-50); /* #fafafa */
+  border-color: var(--color-neutral-lm-300); /* #d5d7da */
+  cursor: not-allowed;
+}
+
+.checkbox__box--checked:disabled {
+  background: var(--color-neutral-lm-50);
+  border-color: var(--color-neutral-lm-300);
+}
+
+/* ─── ICONS ────────────────────────────────────────────────────────────────── */
+
+.checkbox__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+}
+
+.checkbox__box:disabled .checkbox__icon {
+  color: var(--color-neutral-lm-400); /* #a4a7ae */
+}
+
+/* ─── TEXT ─────────────────────────────────────────────────────────────────── */
+
+.checkbox__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 0px;
+}
+
+.checkbox__label {
+  font-size: var(--font-size-3); /* 16px */
+  font-weight: var(--font-weight-medium); /* 500 */
+  color: var(--color-neutral-lm-700); /* #414651 */
+  line-height: var(--line-height-h4); /* 24px */
+}
+
+.checkbox__description {
+  font-size: var(--font-size-2); /* 14px */
+  font-weight: var(--font-weight-regular); /* 400 */
+  color: var(--color-neutral-lm-600); /* #535862 */
+  line-height: var(--line-height-body); /* 20px */
+}

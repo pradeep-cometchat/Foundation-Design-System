@@ -1,0 +1,316 @@
+/*
+ * Button component styles.
+ * Uses foundation CSS variables for colors, radius, shadows, spacing, and typography.
+ *
+ * Hierarchy: primary | secondary | tertiary | link-color | link-gray
+ *            destructive-primary | destructive-secondary | destructive-tertiary | destructive-link
+ * Sizes:     sm (36px) | md (40px) | lg (44px) | xl (48px)
+ * States:    default | hover | focus-visible | disabled | loading
+ */
+
+/* ─── BASE ─────────────────────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1); /* 4px */
+  border: none;
+  border-radius: var(--radius-md); /* 8px */
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease,
+    box-shadow 120ms ease, opacity 120ms ease;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  position: relative;
+  outline: none;
+}
+
+.btn:focus-visible {
+  box-shadow: var(--focus-ring-xs);
+}
+
+.btn--full {
+  width: 100%;
+}
+
+/* ─── SIZES ────────────────────────────────────────────────────────────────── */
+
+.btn--sm {
+  height: 36px;
+  padding: var(--space-2) var(--space-3); /* 8px 12px */
+  font-size: var(--font-size-2); /* 14px */
+  line-height: var(--line-height-body); /* 20px */
+  gap: var(--space-1); /* 4px */
+}
+
+.btn--md {
+  height: 40px;
+  padding: 10px var(--space-3-5, 14px); /* 10px 14px */
+  font-size: var(--font-size-2); /* 14px */
+  line-height: var(--line-height-body); /* 20px */
+  gap: var(--space-1); /* 4px */
+}
+
+.btn--lg {
+  height: 44px;
+  padding: 10px var(--space-4); /* 10px 16px */
+  font-size: var(--font-size-3); /* 16px */
+  line-height: var(--line-height-h4); /* 24px */
+  gap: var(--space-1-5); /* 6px */
+}
+
+.btn--xl {
+  height: 48px;
+  padding: var(--space-3) 18px; /* 12px 18px */
+  font-size: var(--font-size-3); /* 16px */
+  line-height: var(--line-height-h4); /* 24px */
+  gap: var(--space-1-5); /* 6px */
+}
+
+/* Icon-only: square aspect ratio */
+.btn--icon-only.btn--sm { width: 36px; padding: 0; }
+.btn--icon-only.btn--md { width: 40px; padding: 0; }
+.btn--icon-only.btn--lg { width: 44px; padding: 0; }
+.btn--icon-only.btn--xl { width: 48px; padding: 0; }
+
+/* ─── PRIMARY ──────────────────────────────────────────────────────────────── */
+
+.btn--primary {
+  background: var(--color-primary); /* #6852d6 */
+  color: var(--color-white);
+  box-shadow: var(--shadow-xs);
+}
+.btn--primary:hover {
+  background: var(--color-ep-700); /* #5925dc */
+}
+.btn--primary:focus-visible {
+  background: var(--color-primary);
+  box-shadow: var(--focus-ring-xs);
+}
+.btn--primary:disabled,
+.btn--primary[aria-busy="true"] {
+  background: var(--color-neutral-lm-100); /* #f5f5f5 */
+  color: var(--color-neutral-lm-400); /* #a4a7ae */
+  border: 1px solid var(--color-neutral-lm-200); /* #e9eaeb */
+  box-shadow: var(--shadow-xs);
+  cursor: not-allowed;
+}
+
+/* ─── SECONDARY ────────────────────────────────────────────────────────────── */
+
+.btn--secondary {
+  background: var(--color-white);
+  color: var(--color-neutral-lm-700); /* #414651 */
+  border: 1px solid var(--color-neutral-lm-300); /* #d5d7da */
+  box-shadow: var(--shadow-xs);
+}
+.btn--secondary:hover {
+  background: var(--color-neutral-lm-50); /* #fafafa */
+  color: var(--color-neutral-lm-800); /* #252b37 */
+}
+.btn--secondary:focus-visible {
+  background: var(--color-white);
+  box-shadow: var(--focus-ring-xs);
+}
+.btn--secondary:disabled,
+.btn--secondary[aria-busy="true"] {
+  background: var(--color-white);
+  color: var(--color-neutral-lm-400);
+  border-color: var(--color-neutral-lm-200);
+  cursor: not-allowed;
+}
+
+/* ─── TERTIARY ─────────────────────────────────────────────────────────────── */
+
+.btn--tertiary {
+  background: transparent;
+  color: var(--color-neutral-lm-600); /* #535862 */
+}
+.btn--tertiary:hover {
+  background: var(--color-neutral-lm-50); /* #fafafa */
+  color: var(--color-neutral-lm-700); /* #414651 */
+}
+.btn--tertiary:focus-visible {
+  background: var(--color-white);
+  box-shadow: var(--focus-ring-xs);
+}
+.btn--tertiary:disabled,
+.btn--tertiary[aria-busy="true"] {
+  background: transparent;
+  color: var(--color-neutral-lm-400);
+  cursor: not-allowed;
+}
+
+/* ─── LINK COLOR ───────────────────────────────────────────────────────────── */
+
+.btn--link-color {
+  background: transparent;
+  color: var(--color-primary); /* #6852d6 */
+  padding-left: 0;
+  padding-right: 0;
+  height: auto;
+  box-shadow: none;
+}
+.btn--link-color:hover {
+  color: var(--color-ep-700); /* #5925dc */
+}
+.btn--link-color:focus-visible {
+  box-shadow: none;
+  text-decoration: underline;
+}
+.btn--link-color:disabled {
+  color: var(--color-neutral-lm-400);
+  cursor: not-allowed;
+}
+
+/* ─── LINK GRAY ────────────────────────────────────────────────────────────── */
+
+.btn--link-gray {
+  background: transparent;
+  color: var(--color-neutral-lm-600); /* #535862 */
+  padding-left: 0;
+  padding-right: 0;
+  height: auto;
+  box-shadow: none;
+}
+.btn--link-gray:hover {
+  color: var(--color-neutral-lm-700);
+}
+.btn--link-gray:focus-visible {
+  box-shadow: none;
+  text-decoration: underline;
+}
+.btn--link-gray:disabled {
+  color: var(--color-neutral-lm-400);
+  cursor: not-allowed;
+}
+
+/* ─── DESTRUCTIVE PRIMARY ──────────────────────────────────────────────────── */
+
+.btn--destructive-primary {
+  background: var(--color-error); /* #d92d20 */
+  color: var(--color-white);
+  box-shadow: var(--shadow-xs);
+}
+.btn--destructive-primary:hover {
+  background: var(--color-error-700); /* #b42318 */
+}
+.btn--destructive-primary:focus-visible {
+  background: var(--color-error);
+  box-shadow: var(--focus-ring-error-xs);
+}
+.btn--destructive-primary:disabled,
+.btn--destructive-primary[aria-busy="true"] {
+  background: var(--color-neutral-lm-100);
+  color: var(--color-neutral-lm-400);
+  border: 1px solid var(--color-neutral-lm-200);
+  box-shadow: var(--shadow-xs);
+  cursor: not-allowed;
+}
+
+/* ─── DESTRUCTIVE SECONDARY ────────────────────────────────────────────────── */
+
+.btn--destructive-secondary {
+  background: var(--color-white);
+  color: var(--color-error); /* #d92d20 */
+  border: 1px solid var(--color-error-300); /* #fda29b */
+  box-shadow: var(--shadow-xs);
+}
+.btn--destructive-secondary:hover {
+  background: var(--color-error-50); /* #fef3f2 */
+  color: var(--color-error-700); /* #b42318 */
+}
+.btn--destructive-secondary:focus-visible {
+  box-shadow: var(--focus-ring-error-xs);
+}
+.btn--destructive-secondary:disabled,
+.btn--destructive-secondary[aria-busy="true"] {
+  background: var(--color-white);
+  color: var(--color-neutral-lm-400);
+  border-color: var(--color-neutral-lm-200);
+  cursor: not-allowed;
+}
+
+/* ─── DESTRUCTIVE TERTIARY ─────────────────────────────────────────────────── */
+
+.btn--destructive-tertiary {
+  background: transparent;
+  color: var(--color-error); /* #d92d20 */
+}
+.btn--destructive-tertiary:hover {
+  background: var(--color-error-50);
+  color: var(--color-error-700);
+}
+.btn--destructive-tertiary:focus-visible {
+  box-shadow: var(--focus-ring-error-xs);
+}
+.btn--destructive-tertiary:disabled {
+  color: var(--color-neutral-lm-400);
+  cursor: not-allowed;
+}
+
+/* ─── DESTRUCTIVE LINK ─────────────────────────────────────────────────────── */
+
+.btn--destructive-link {
+  background: transparent;
+  color: var(--color-error);
+  padding-left: 0;
+  padding-right: 0;
+  height: auto;
+  box-shadow: none;
+}
+.btn--destructive-link:hover {
+  color: var(--color-error-700);
+}
+.btn--destructive-link:disabled {
+  color: var(--color-neutral-lm-400);
+  cursor: not-allowed;
+}
+
+/* ─── LOADING ──────────────────────────────────────────────────────────────── */
+
+.btn__spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: btn-spin 600ms linear infinite;
+}
+
+.btn--lg .btn__spinner,
+.btn--xl .btn__spinner {
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── ICON SLOTS ───────────────────────────────────────────────────────────── */
+
+.btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn__icon svg,
+.btn__icon [data-icon] {
+  width: 20px;
+  height: 20px;
+}
+
+.btn--lg .btn__icon svg,
+.btn--lg .btn__icon [data-icon],
+.btn--xl .btn__icon svg,
+.btn--xl .btn__icon [data-icon] {
+  width: 24px;
+  height: 24px;
+}
