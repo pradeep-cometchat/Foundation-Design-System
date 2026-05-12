@@ -140,7 +140,7 @@ import { Meta } from "@storybook/blocks";
   }}
 >
   {/* Colors */}
-  <div style={cardStyle}>
+  <div onClick={() => window.top.location.href = window.top.location.pathname + '?path=/docs/foundation-colors--docs'} style={cardLinkStyle}>
     <div style={cardPreview}>
       <div style={{ display: "flex", gap: 6 }}>
         {["#ebe9fe", "#9b8afb", "#6852d6", "#4a1fb8", "#27115f"].map((c) => (
@@ -165,7 +165,7 @@ import { Meta } from "@storybook/blocks";
   </div>
 
   {/* Typography */}
-  <div style={cardStyle}>
+  <div onClick={() => window.top.location.href = window.top.location.pathname + '?path=/docs/foundation-typography--docs'} style={cardLinkStyle}>
     <div style={cardPreview}>
       <span
         style={{
@@ -203,7 +203,7 @@ import { Meta } from "@storybook/blocks";
   </div>
 
   {/* Spacing */}
-  <div style={cardStyle}>
+  <div onClick={() => window.top.location.href = window.top.location.pathname + '?path=/docs/foundation-spacing--docs'} style={cardLinkStyle}>
     <div style={cardPreview}>
       <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
         {[12, 24, 48, 80, 120].map((w) => (
@@ -227,7 +227,7 @@ import { Meta } from "@storybook/blocks";
   </div>
 
   {/* Radius */}
-  <div style={cardStyle}>
+  <div onClick={() => window.top.location.href = window.top.location.pathname + '?path=/docs/foundation-radius--docs'} style={cardLinkStyle}>
     <div style={cardPreview}>
       {[0, 4, 8, 12, 20, 999].map((r) => (
         <div
@@ -251,7 +251,7 @@ import { Meta } from "@storybook/blocks";
   </div>
 
   {/* Icons */}
-  <div style={cardStyle}>
+  <div onClick={() => window.top.location.href = window.top.location.pathname + '?path=/docs/foundation-icons--docs'} style={cardLinkStyle}>
     <div style={cardPreview}>
       <div
         style={{
@@ -286,7 +286,7 @@ import { Meta } from "@storybook/blocks";
   </div>
 
   {/* Effects */}
-  <div style={{ ...cardStyle, gridColumn: "span 1" }}>
+  <div onClick={() => window.top.location.href = window.top.location.pathname + '?path=/docs/foundation-effects-shadows--docs'} style={cardLinkStyle}>
     <div style={cardPreview}>
       <div
         style={{
@@ -471,6 +471,21 @@ export const cardStyle = {
   flexDirection: "column",
   gap: 12,
   transition: "all 160ms ease",
+};
+
+export const cardLinkStyle = {
+  padding: 18,
+  borderRadius: 14,
+  border: "1px solid var(--color-neutral-200)",
+  background: "var(--color-white)",
+  boxShadow: "var(--shadow-xs)",
+  display: "flex",
+  flexDirection: "column",
+  gap: 12,
+  transition: "all 160ms ease",
+  textDecoration: "none",
+  color: "inherit",
+  cursor: "pointer",
 };
 
 export const cardPreview = {
